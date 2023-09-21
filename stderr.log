@@ -1,0 +1,155 @@
+node:internal/modules/cjs/loader:959
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/ulegong/promise_api/index.js
+- /usr/local/lsws/fcgi-bin/lsnode.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:956:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:804:27)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/home/ulegong/promise_api/index.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ulegong/promise_api/index.js',
+    '/usr/local/lsws/fcgi-bin/lsnode.js'
+  ]
+}
+node:internal/modules/cjs/loader:959
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/ulegong/promise_api/index.js
+- /usr/local/lsws/fcgi-bin/lsnode.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:956:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:804:27)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/home/ulegong/promise_api/index.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ulegong/promise_api/index.js',
+    '/usr/local/lsws/fcgi-bin/lsnode.js'
+  ]
+}
+node:internal/modules/cjs/loader:959
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/ulegong/promise_api/index.js
+- /usr/local/lsws/fcgi-bin/lsnode.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:956:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:804:27)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/home/ulegong/promise_api/index.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ulegong/promise_api/index.js',
+    '/usr/local/lsws/fcgi-bin/lsnode.js'
+  ]
+}
+node:internal/modules/cjs/loader:959
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/ulegong/promise_api/index.js
+- /usr/local/lsws/fcgi-bin/lsnode.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:956:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:804:27)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/home/ulegong/promise_api/index.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ulegong/promise_api/index.js',
+    '/usr/local/lsws/fcgi-bin/lsnode.js'
+  ]
+}
+node:internal/modules/cjs/loader:959
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/ulegong/promise_api/index.js
+- /usr/local/lsws/fcgi-bin/lsnode.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:956:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:804:27)
+    at Module.require (node:internal/modules/cjs/loader:1028:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at Object.<anonymous> (/home/ulegong/promise_api/index.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1126:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1180:10)
+    at Module.load (node:internal/modules/cjs/loader:1004:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:839:12)
+    at Module.require (node:internal/modules/cjs/loader:1028:19) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/ulegong/promise_api/index.js',
+    '/usr/local/lsws/fcgi-bin/lsnode.js'
+  ]
+}
+/home/ulegong/promise_api/controllers/students.controllers.js:43
+        next(new AppError(error,400))
+        ^
+
+ReferenceError: next is not defined
+    at exports.getAll (/home/ulegong/promise_api/controllers/students.controllers.js:43:9)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+/home/ulegong/promise_api/controllers/students.controllers.js:43
+        next(new AppError(error,400))
+        ^
+
+ReferenceError: next is not defined
+    at exports.getAll (/home/ulegong/promise_api/controllers/students.controllers.js:43:9)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+/home/ulegong/promise_api/controllers/students.controllers.js:43
+        next(new AppError(error,400))
+        ^
+
+ReferenceError: next is not defined
+    at exports.getAll (/home/ulegong/promise_api/controllers/students.controllers.js:43:9)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+/home/ulegong/promise_api/controllers/students.controllers.js:43
+        next(new AppError(error,400))
+        ^
+
+ReferenceError: next is not defined
+    at exports.getAll (/home/ulegong/promise_api/controllers/students.controllers.js:43:9)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+/home/ulegong/promise_api/controllers/students.controllers.js:43
+        next(new AppError(error,400))
+        ^
+
+ReferenceError: next is not defined
+    at exports.getAll (/home/ulegong/promise_api/controllers/students.controllers.js:43:9)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)

@@ -1,0 +1,391 @@
+{
+  "swagger": "2.0",
+  "info": {
+      "version": "1.0.0",
+      "title": "promise school crud api",
+      "description": "school api",
+      "license": {
+          "name": "MIT",
+          "url": "https://opensource.org/licenses/MIT"
+      }
+  },
+      "host": "localhost:4000/api/v1",
+      "basePath": "/",
+      "securityDefinitions": {
+        "bearerAuth": {
+          "type": "apiKey",
+          "name": "Authorization",
+          "scheme": "Bearer",
+          "in": "header"
+        }
+    },
+      "tags": [
+          {
+              "name":"Students",
+              "description": "the api for students crud operation"
+          },
+          {
+            "name":"Admin",
+            "description": "the api for admin crud operation"
+          },
+          {
+            "name":"Staffs",
+            "description": "the api for staff crud operation"
+        }
+      ],
+      "schemes": ["http"],
+      "consumes": ["application/json"],
+      "produces": ["application/json"],
+     "paths": {
+            "/student": {
+            "get": {
+              "security": [ { "bearerAuth": [] } ],
+              "tags": ["Students"],
+              "summary": "get all student in the system",
+              "responses": {
+                  "200":{
+              "description": "OK",
+              "schema": {
+                     "$ref": "#/definitions/Students"
+                      }
+                  }
+              }
+            },
+            "post": {
+              "security": [ { "bearerAuth": [] } ],
+              "tags": ["Students"],
+              "summary": "Create new student in the system",
+              "parameters": [
+                {
+                  "name": "student",
+                   "in": "body",
+                  "description": "student that we want to create",
+                  "schema": {
+                    "$ref": "#/definitions/Students"
+                  }
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "New user is created",
+                  "schema": {
+                    "$ref": "#/definitions/Students"
+                  }
+                }
+              }
+            }
+           },
+            "/student/{id}": {
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "description": "ID of user that we want to find",
+                  "type": "integer"
+                }
+              ],
+              "put": {
+              "security": [ { "bearerAuth": [] } ],
+              "summary": "updated user",
+              "tags":["Students"],
+              "parameters":[
+                {
+                  "name":"student",
+                  "in":"body",
+                  "description": "new values of student",
+                  "schema": {
+                    "$ref":"#/definitions/Students"
+                  }
+                }
+              ],
+              "responses":{
+                "200":{
+                  "description":"OK",
+                  "schema": {
+                    "$ref":"#/definitions/Students"
+                  }
+                }
+              }
+              },
+              "delete": {
+              "security": [ { "bearerAuth": [] } ],
+                "summary": "Delete user with given ID",
+                "tags": ["Students"],
+                "responses": {
+                  "200": {
+                    "description": "User is deleted",
+                    "schema": {
+                      "$ref": "#/definitions/Students"
+                    }
+                  }
+                }
+              }
+            },
+            "/admin/register": {
+              "post": {
+                "tags": ["Admin"],
+                "summary": "Create new admin in the system",
+                "parameters": [
+                  {
+                    "name": "admin",
+                     "in": "body",
+                    "description": "admin that we want to create",
+                    "schema": {
+                      "$ref": "#/definitions/Admin"
+                    }
+                  }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                  "200": {
+                    "description": "New user is created",
+                    "schema": {
+                      "$ref": "#/definitions/Admin"
+                    }
+                  }
+                }
+              }
+            },
+            "/admin/login": {
+              "post": {
+                "tags": ["Admin"],
+                "summary": "to login admin",
+                "parameters": [
+                  {
+                    "name": "admin",
+                     "in": "body",
+                    "description": "take the values of the loggedin admin",
+                    "schema": {
+                      "$ref": "#/definitions/LoggedInAdmin"
+                    }
+                  }
+                ],
+                "produces": ["application/json"],
+                "responses": {
+                  "200": {
+                    "description": "admin logged in",
+                    "schema": {
+                      "$ref": "#/definitions/LoggedInAdmin"
+                    }
+                  }
+                }
+              }
+            },
+            "/admin/logout": {
+              "get": {
+              "security": [ { "bearerAuth": [] } ],
+                "tags": ["Admin"],
+                "summary": "logout an admin",
+                "responses": {
+                    "200":{
+                "description": "OK",
+                "schema": {
+                       "$ref": "#/definitions/Admin"
+                        }
+                    }
+                }
+              }
+            },
+            "/staff": {
+              "get": {
+              "security": [ { "bearerAuth": [] } ],
+                "tags": ["Staffs"],
+                "summary": "to get all staff",
+                "responses": {
+                    "200":{
+                "description": "OK",
+                "schema": {
+                       "$ref": "#/definitions/Staffs"
+                        }
+                    }
+                }
+              },
+                "post": {
+              "security": [ { "bearerAuth": [] } ],
+                  "tags": ["Staffs"],
+                  "summary": "to create staff",
+                  "parameters": [
+                    {
+                      "name": "staff",
+                       "in": "body",
+                      "description": "created a staff",
+                      "schema": {
+                        "$ref": "#/definitions/Staffs"
+                      }
+                    }
+                  ],
+                  "produces": ["application/json"],
+                  "responses": {
+                    "200": {
+                      "description": "created a staff",
+                      "schema": {
+                        "$ref": "#/definitions/Staffs"
+                      }
+                    }
+                  }
+                }
+            },
+            "/staff/{id}": {
+              "parameters": [
+                {
+                  "name": "id",
+                  "in": "path",
+                  "required": true,
+                  "description": "ID of staff that we want to find",
+                  "type": "integer"
+                }
+              ],
+              "put": {
+              "security": [ { "bearerAuth": [] } ],
+                "summary": "updated staff",
+                "tags":["Staffs"],
+                "parameters":[
+                  {
+                    "name":"student",
+                    "in":"body",
+                    "description": "new values of staff",
+                    "schema": {
+                      "$ref":"#/definitions/updatedStaff"
+                    }
+                  }
+                ],
+                "responses":{
+                  "200":{
+                    "description":"OK",
+                    "schema": {
+                      "$ref":"#/definitions/updatedStaff"
+                    }
+                  }
+                }
+                },
+                "delete": {
+              "security": [ { "bearerAuth": [] } ],
+                  "summary": "Delete staff with given ID",
+                  "tags": ["Staffs"],
+                  "responses": {
+                    "200": {
+                      "description": "User is deleted",
+                      "schema": {
+                        "$ref": "#/definitions/Staffs"
+                      }
+                    }
+                  }
+                }
+            }
+          },
+        "definitions": {
+          "Students": {
+            "required": ["surname", "firstName", "phoneNumber"],
+            "properties": {
+              "surname": {
+                "type": "string"
+              },
+              "firstName": {
+                  "type": "string"
+              },
+              "DOB": {
+                  "type": "string"
+            },
+            "LGA": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "nameOfParent": {
+              "type": "string"
+            },
+            "phoneNumber": {
+              "type": "string"
+            },
+            "yearOfAdmission": {
+              "type": "string"
+            },
+            "previousClass": {
+              "type": "string"
+            }
+          }
+        },
+        "Admin":{
+          "required": ["fullName", "email", "password"],
+          "properties": {
+              "fullName": {
+                  "type": "string"
+              },
+              "email": {
+                  "type": "string"
+              },
+              "password":{
+                  "type": "string"
+              }
+          }
+        },
+        "LoggedInAdmin": {
+          "required":["email","password"],
+          "properties": {
+            "email": {
+              "type":"string"
+            },
+            "password":{
+              "type":"string"
+            }
+        }
+        },
+        "Staffs": {
+          "required":["firstName","lastName","email","number","state"],
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type":"string"
+            },
+            "email": {
+              "type": "string",
+              "uniqueItems": true
+            },
+            "number": {
+              "type": "integer"
+            },
+            "country": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "DOB": {
+              "type": "string"
+            }
+          }
+        },
+        "updatedStaff": {
+          "required":["firstName","lastName","email","number","state"],
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type":"string"
+            },
+            "email": {
+              "type": "string",
+              "uniqueItems": true
+            },
+            "number": {
+              "type": "integer"
+            },
+            "country": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "DOB": {
+              "type": "string"
+            }
+          }
+        }
+      }
+  }
