@@ -3,12 +3,6 @@ require('dotenv').config();
 
 const { DB_NAME, DB_USER, DB_PASSWORD } = process.env;
 
-// Configuration that follows the file
-// const sequelize = new Sequelize('ulegong_school_db','ulegong_promise_db','} ',{
-//     host: 'localhost',
-//     dialect: 'mysql'
-// })
-
 /**
  * @dev  Use thid config with Docker 
  */
@@ -17,6 +11,7 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
     host: 'localhost',
     dialect: 'mysql'
   });
+
 
 
 
