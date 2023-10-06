@@ -1,4 +1,5 @@
 const students = require("../models/students.model");
+const Teacher = require('../models/teacherModel')
 const sequelize = require("../database.js");
 const AppError = require('../Error/app.error')
 const Course = require("../models/course.model");
@@ -164,3 +165,37 @@ try {
     next(new AppError(error,400))
 }
 }
+
+
+// Define the function to get students by teacher
+exports.getStudentsByTeacher = async (req, res, next) => {
+    try {
+        const id = req.params.id; // Assuming you pass the teacherId as a route parameter
+  
+      await sequelize.sync();
+  
+      // Use Sequelize to find the teacher by ID
+      const teacher = await Teacher.findByPk(id);
+  
+      if (!teacher) {
+        return res.status(404).json({
+          status: "error",
+          message: "Teacher not found",
+        });
+      }
+  
+      // Use Sequelize to find students associated with the teacher
+      const studentsOfTeacher = await students.findAll({
+        where: {
+          teacher_id: id,
+        },
+      });
+  
+      res.status(200).json({
+        status: "success",
+        data: studentsOfTeacher,
+      });
+    } catch (error) {
+      next(new AppError(error, 400));
+    }
+  };

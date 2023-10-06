@@ -13,7 +13,9 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   });
 
 
-
+  /** 
+   *  @dev Use this if you arent using environmental variables
+   */
 
 // const sequelize = new Sequelize('alimisam_new-promise-db','alimisam_new_promise','promise@new',{
 //     host: 'localhost',

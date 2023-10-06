@@ -13,5 +13,5 @@ services:
     ports:
       - "${DB_PORT}:3306"
     volumes:
-      - ./docker-db/data:/var/lib/mysql
+      - ./docker-db/data:/var/lib/updated1
 

@@ -3,11 +3,12 @@ const JWT = require('jsonwebtoken')
 const sequelize = require('../database')
 const students = require('../models/students.model');
 const bcrypt = require('bcrypt')
+const AppError = require('../Error/app.error')
 
-exports.resgisterTeacher = async (req,res) => {
+exports.registerTeacher = async (req,res) => {
     try {
    await sequelize.sync();
-   const {firstName,lastName,email,password,className} = req.body;
+   const {firstName,lastName,email,password,className,phoneNumber,country} = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -17,7 +18,9 @@ exports.resgisterTeacher = async (req,res) => {
         lastName: lastName,
         email: email,
         password: hashedPassword,
-        className: className
+        className: className,
+        phoneNumber: phoneNumber,
+        country:country
       });
 
       res.status(201).json({
@@ -35,50 +38,52 @@ exports.resgisterTeacher = async (req,res) => {
 }
 
 
-exports.loginTeacher = async (req,res) => {
-    try {
-        await sequelize.sync()
-        const { email,password } = req.body
-        const teacher = await Teacher.findOne({
-            where: {
-                email: email
-            }
-        })
+// exports.loginTeacher = async (req,res) => {
+//     try {
+//         await sequelize.sync()
+//         const { email,password } = req.body
+//         const teacher = await Teacher.findOne({
+//             where: {
+//                 email: email
+//             }
+//         })
         
-        const decryptedPassword = await bcrypt.compare(password, teacher.password);
+//         const decryptedPassword = await bcrypt.compare(password, teacher.password);
         
-        if(decryptedPassword) {
+//         if(decryptedPassword) {
 
-            const accessToken = JWT.sign(
-                {
-                  isAdmin: teacher.isAdmin,
-                  id: teacher.id,
-                  email: teacher.email
-                },
-                process.env.JWT_SEC,
-                { expiresIn: "1d" }
-              );
+//             const accessToken = JWT.sign(
+//                 {
+//                   isAdmin: teacher.isAdmin,
+//                   id: teacher.id,
+//                   email: teacher.email
+//                 },
+//                 process.env.JWT_SEC,
+//                 { expiresIn: "1d" }
+//               );
 
-         res.status(200).json({
-            status: 'success',
-            data: teacher,
-            token: accessToken
-           })
-        }else {
-            res.status(400).json({
-                status: 'failed',
-                message: 'email or password may be incorrect'
-            })
-        }
+//          res.status(200).json({
+//             status: 'success',
+//             data: teacher,
+//             token: accessToken,
+//             isAdmin: true,
+//            })
+//         }else {
+//             res.status(400).json({
+//                 status: 'failed',
+//                 message: 'email or password may be incorrect'
+//             })
+//         }
 
-    } catch (error) {
-        res.status(400).json({
-            status: "failed",
-            data: error
-        })
-    }
-}
+//     } catch (error) {
+//         res.status(400).json({
+//             status: "failed",
+//             data: error
+//         })
+//     }
+// }
 
+// get all tecahers
 
 exports.getTeachers = async (req,res) => {
 try {
@@ -97,6 +102,7 @@ try {
 }
 
 
+// get teacher by student
 exports.getTeacherStudent = async (req,res) => {
     try {
         await sequelize.sync()
@@ -121,16 +127,19 @@ res.status(400).json({
 })
 }}
 
+// update teacher by id
 
 exports.updateTeacherById = async(req,res) => {
     try {
     const {id} = req.params
-    const {firstName,lastName,email,className} = req.body;
+    const {firstName,lastName,email,className,phoneNumber,country} = req.body;
     const teacher = await Teacher.update({
         firstName: firstName,
         lastName: lastName,
         email: email,
-        className: className
+        className: className,
+        phoneNumber: phoneNumber,
+        country: country
     },{
         where: {
             id: id
@@ -147,3 +156,55 @@ exports.updateTeacherById = async(req,res) => {
         })
     }
 }
+
+
+// reset teacher password
+exports.resetPassword = async (req,res) => {
+    const {email,password} = req.body;
+   try {
+    await sequelize.sync()
+    const teacher = await Teacher.findOne({
+        where: {
+            email: email
+        }
+    })
+    if(teacher.email === email) {
+         await Teacher.update({
+            password: password
+        },{
+            where: {
+                email: email
+            }
+        })
+        res.status(201).json({
+            status: "success",
+            message: "password successfully changed"
+        })
+    }
+   } catch (error) {
+    res.status(400).json({
+        status: "failed",
+        error: "check email properly"
+    })
+   }
+}
+
+// delete teacher by id
+exports.deleteTeacherById = async (req, res) => {
+    const id = req.params.id;
+    try {
+        await sequelize.sync();
+
+        await Teacher.destroy({
+            where: {
+                id: id,
+            },
+        });
+        res.status(200).json({
+            status: "success",
+            data: null,
+        });
+    } catch (error) {
+        next(new AppError(error,400))   
+    }
+};

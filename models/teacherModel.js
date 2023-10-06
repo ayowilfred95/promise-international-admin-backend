@@ -12,7 +12,8 @@ const Teacher = sequelize.define('teachers', {
         type: DataTypes.STRING
     },
     lastName: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     },
     email: {
         type: DataTypes.STRING,
@@ -32,6 +33,12 @@ const Teacher = sequelize.define('teachers', {
     },
     className: {
         type: DataTypes.STRING
+    },
+    phoneNumber: {
+        type: DataTypes.STRING // Add phoneNumber field because the meet code doesnt have this field initially
+    },
+    country: {
+        type: DataTypes.STRING, // Make country optional, remove allowNull or add allowNull is you required it
     }
 })
 

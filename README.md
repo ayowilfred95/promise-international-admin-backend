@@ -12,4 +12,10 @@ run "npm run start" to start the server
 ### To spin up the Database server 
 ### run "docker-compose up -d"
 
+#### To close the database
+##### .  run "docker-compose down"
+
+Note :
+    Please connect the database first and grant access to all users before starting the server
+
 
