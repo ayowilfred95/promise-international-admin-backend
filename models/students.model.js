@@ -7,6 +7,15 @@ const students = sequelize.define("student", {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
   },
+  classSequentialNumber: {
+    type: DataTypes.INTEGER,
+    defaultValue: 1, // Default to 1 for the first student in a class
+},
+  matriculationNumber: {
+    type: DataTypes.STRING, 
+    allowNull: false,
+    unique: true, 
+},
   surname: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -40,6 +49,9 @@ const students = sequelize.define("student", {
     },
   },
   previousClass: {
+    type: DataTypes.STRING,
+  },
+  className: {
     type: DataTypes.STRING,
   },
   teacher_id: {

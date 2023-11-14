@@ -1,5 +1,6 @@
 const sequelize = require('../database');
 const Course = require('../models/course.model');
+const Student = require('../models/students.model')
 
 
 
@@ -15,6 +16,17 @@ exports.createStudentReportById = async(req,res) => {
         student_fullName,
         student_id
     } = req.body;
+
+      // Check if the student with the provided ID exists
+      const existingStudent = await Student.findByPk(student_id);
+      if (!existingStudent) {
+          return res.status(404).json({
+              status: 'failed',
+              message: 'Student not found',
+          });
+      }
+
+
      const report = await Course.create({
        course_name: course_name,
        test_score: test_score,
@@ -26,14 +38,58 @@ exports.createStudentReportById = async(req,res) => {
      })
      res.status(201).json({
         status: 'success',
-        data: report
-     })
+        data: report.toJSON(), // Convert the Sequelize model instance to a plain JavaScript object
+     });
 } catch (error) {
     res.status(400).json({
         status: 'failed',
-        data: error
+        message: 'Error creating student report',
+        error: error.message,
     })
 }};
+
+
+exports.getStudentReportById = async (req, res) => {
+    try {
+        const {id} = req.params;
+
+        // Check if a student with the given ID exists
+        const student = await Student.findByPk(id);
+
+        if (!student) {
+            return res.status(404).json({
+                status: 'failed',
+                message: 'Student not found',
+            });
+        }
+
+        // Now that you have the student, you can retrieve their report
+        const report = await Course.findOne({
+            where: {
+                student_id: id,
+            },
+        });
+
+        if (!report || report.length === 0) {
+            return res.status(404).json({
+                status: 'failed',
+                message: 'No reports found for the student',
+            });
+        }
+
+        res.status(200).json({
+            status: 'success',
+            data: report,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            status: 'failed',
+            message: 'Internal server error',
+        });
+    }
+};
+
 
 
 
