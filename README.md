@@ -18,4 +18,8 @@ run "npm run start" to start the server
 Note :
     Please connect the database first and grant access to all users before starting the server
 
+### : Dtabase
 
+postgres database is used for the testing purpose
+
+you can use any database of your choice like mysql
