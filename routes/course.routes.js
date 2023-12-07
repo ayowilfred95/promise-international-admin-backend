@@ -1,4 +1,4 @@
-const {createStudentReportById, getAllStudentReport, updateStudentReport, deleteCourseById,getStudentReportById } = require('../controllers/course.controller')
+const {createStudentReportById, getAllStudentReport, updateStudentReport, deleteCourseById,getStudentReportById,getStudentAverageCourseById} = require('../controllers/course.controller')
 const express = require('express');
 const { getStudentReport, getStudentCourses} = require('../controllers/students.controllers');
 
@@ -10,6 +10,7 @@ router.route('/update/student/report').put(updateStudentReport)
 router.route('/student/courses/:id').get(getStudentCourses)
 router.route('/:id').delete(deleteCourseById)
 router.route('/student/report/:id').get(getStudentReportById)
+router.route('/student/courses/average/:id').get(getStudentAverageCourseById)
 
 
 module.exports = router;

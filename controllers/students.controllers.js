@@ -156,10 +156,18 @@ exports.updateOneById = async (req, res,next) => {
 
       // Combine the unique identifier with the class and sequential number
       const matriculationNumber = generateMatriculationNumber(currentClass, classSequentialNumber);
+         // Find the student by ID
+    const student = await students.findByPk(id);
 
+    if (!student) {
+        return res.status(404).json({
+          status: 'failed',
+          message: 'No student found with the provided ID',
+        });
+      }
 
-      const [rowsUpdated, [updatedStudent]]  = await students.update(
-      {
+     // Update the student
+     const updatedStudent = await student.update({
         matriculationNumber: matriculationNumber,
         surname: req.body.surname,
         firstName: req.body.firstName,
@@ -173,14 +181,8 @@ exports.updateOneById = async (req, res,next) => {
         previousClass: req.body.previousClass,
         className: req.body.className,
         teacher_id: req.body.teacher_id,
-      },
-      {
-        where: {
-          id: id,
-        },
-        returning: true,
-      }
-    );
+      });
+
     res.status(200).json({
       status: "success",
       data: updatedStudent,
@@ -209,7 +211,7 @@ exports.deleteOneById = async (req, res) => {
   }
 };
 
-exports.getStudentReport = async (req, res) => {
+exports.getStudentReport = async (req, res,next) => {
   try {
     const student = await students.findOne({
       where: {
@@ -240,7 +242,7 @@ exports.getStudentReport = async (req, res) => {
   }
 };
 
-exports.getStudentCourses = async (req, res) => {
+exports.getStudentCourses = async (req, res,next) => {
   try {
     const data = await students.findAll({
       include: [
