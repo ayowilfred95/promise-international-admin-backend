@@ -3,24 +3,15 @@ require("dotenv").config();
 
 const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-// Configuration that follows the file
-// const sequelize = new Sequelize('ulegong_school_db','ulegong_promise_db','} ',{
-//     host: 'localhost',
-//     dialect: 'mysql'
-// })
-
 /**
  * @dev  Use thid config with Docker
  */
 
-const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-  host: DB_HOST,
+const sequelize = new Sequelize('railway', 'postgres', 'CDACBAb11EG6dAeb*eE6-5-dbfG-6c6b', {
+  port: '23821',
+  host: 'roundhouse.proxy.rlwy.net',
   dialect: "postgres",
 });
 
-// const sequelize = new Sequelize('alimisam_new-promise-db','alimisam_new_promise','promise@new',{
-//     host: 'localhost',
-//     dialect: 'mysql'
-// })
 
 module.exports = sequelize;

@@ -43,8 +43,7 @@ exports.createStudentReportById = async (req, res) => {
       grade: grade,
       total: total,
       student_fullName: student_fullName,
-      student_id: student_id,
-      average_score,
+      student_id: student_id
     });
     res.status(201).json({
       status: "success",

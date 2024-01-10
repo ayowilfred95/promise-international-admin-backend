@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "postgres",
-    "password": "jW1mwoN7QqKkfagE",
-    "database": "postgres",
-    "host": "db.qsyxrexhxeiwsygsaxor.supabase.co",
+    "password": "c1E44eCbGDD2Ea2ba3445gF1Ga5*1c1c",
+    "database": "railway",
+    "host": "roundhouse.proxy.rlwy.net",
     "dialect": "postgres"
   }
 }

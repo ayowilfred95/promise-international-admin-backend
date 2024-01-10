@@ -1,6 +1,0 @@
-{
-    "watch": ["./controllers","./models","./routes","server.js","database.js","entry.js","./config"],
-    "ext": ".ts,json,js",
-    "ignore": ["./api/**/*.spec.ts"],
-    "exec": "node server.js"
-  }
