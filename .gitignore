@@ -1,11 +1,7 @@
 .env
 node_modules
-
 migrations
 docker-db
 config
 seeders
 tmp
-
-/node_modules
-/.env
