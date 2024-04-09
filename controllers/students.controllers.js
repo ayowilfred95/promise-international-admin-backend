@@ -297,3 +297,15 @@ exports.getStudentsByTeacher = async (req, res, next) => {
     next(new AppError(error, 400));
   }
 };
+
+
+exports.markStudentsAttendance=async(req,res) =>{
+  try{
+    const{id} = req.params.id
+  }catch(error){
+
+  }
+}
+
+
+

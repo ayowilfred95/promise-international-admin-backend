@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database.js");
+// const Attendance = require("./attendance.model")
 
 const students = sequelize.define("student", {
   id: {
@@ -64,5 +65,9 @@ const students = sequelize.define("student", {
     allowNull: false,
   },
 });
+// students.hasMany(Attendance, {
+//   foreignKey: "attendance_id",
+//   as: "attendance",
+// });
 
 module.exports = students;

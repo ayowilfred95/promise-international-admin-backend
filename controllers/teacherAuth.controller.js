@@ -38,50 +38,6 @@ exports.registerTeacher = async (req,res) => {
 }
 
 
-// exports.loginTeacher = async (req,res) => {
-//     try {
-//         await sequelize.sync()
-//         const { email,password } = req.body
-//         const teacher = await Teacher.findOne({
-//             where: {
-//                 email: email
-//             }
-//         })
-        
-//         const decryptedPassword = await bcrypt.compare(password, teacher.password);
-        
-//         if(decryptedPassword) {
-
-//             const accessToken = JWT.sign(
-//                 {
-//                   isAdmin: teacher.isAdmin,
-//                   id: teacher.id,
-//                   email: teacher.email
-//                 },
-//                 process.env.JWT_SEC,
-//                 { expiresIn: "1d" }
-//               );
-
-//          res.status(200).json({
-//             status: 'success',
-//             data: teacher,
-//             token: accessToken,
-//             isAdmin: true,
-//            })
-//         }else {
-//             res.status(400).json({
-//                 status: 'failed',
-//                 message: 'email or password may be incorrect'
-//             })
-//         }
-
-//     } catch (error) {
-//         res.status(400).json({
-//             status: "failed",
-//             data: error
-//         })
-//     }
-// }
 
 // get all tecahers
 

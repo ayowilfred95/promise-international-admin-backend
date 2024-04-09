@@ -11,7 +11,25 @@ const Course = sequelize.define("course", {
   course_name: {
     type: DataTypes.STRING,
   },
-  test_score: {
+  term: { 
+    type: DataTypes.ENUM('first-term', 'second-term', 'third-term'), 
+  },
+  resumption_test:{
+    type:DataTypes.INTEGER,
+  },
+  first_class_test: {
+    type: DataTypes.INTEGER,
+  },
+  second_class_test: {
+    type: DataTypes.INTEGER,
+  },
+  assignment: {
+    type: DataTypes.INTEGER,
+  },
+  projects: {
+    type: DataTypes.INTEGER,
+  },
+  mid_term_test: {
     type: DataTypes.INTEGER,
   },
   exam_score: {
@@ -19,6 +37,10 @@ const Course = sequelize.define("course", {
   },
   total: {
     type: DataTypes.INTEGER,
+  },
+  average_mark: {
+    type: DataTypes.FLOAT,
+    allowNull: true
   },
   student_fullName: {
     type: DataTypes.STRING,
@@ -28,7 +50,7 @@ const Course = sequelize.define("course", {
   },
   student_id: {
     type: DataTypes.UUID,
-  }
+  },
 });
 
 students.hasMany(Course, {
