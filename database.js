@@ -2,19 +2,19 @@ const Sequelize = require("sequelize");
 // const { Sequelize: mysql } = require("mysql2");
 require("dotenv").config();
 
-const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD, DB_HOST, POSTGRES_PORT } = process.env;
 
 /**
  * @dev  Use thid config with Docker
  */
 
-const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+const sequelize = new Sequelize({
+  database: POSTGRES_DB,
+  username: POSTGRES_USER,
+  password: POSTGRES_PASSWORD,
   host: DB_HOST,
+  port: POSTGRES_PORT,
   dialect: "postgres",
 });
-
-
-
-
 
 module.exports = sequelize;

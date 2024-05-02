@@ -123,13 +123,16 @@ exports.createStudentReportById = async (req, res) => {
   }
 };
 
+
+
+
 exports.getStudentAverageCourseById = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id, term } = req.params;
 
     // Check if a student with the given ID exists
     const student = await Student.findByPk(id, {
-      include: { model: Course, as: "report" }, // Include associated courses
+      include: { model: Course, as: "report", where: { term: term } }, // Include associated courses filtered by term
     });
 
     if (!student) {
@@ -149,13 +152,12 @@ exports.getStudentAverageCourseById = async (req, res) => {
 
      // Update the average_mark field in the database
      await Course.update({ average_mark: averageMark }, {
-      where: { student_id: id } 
+      where: { student_id: id, term: term } 
     });
 
     res.status(200).json({
       status: "success",
       data: {
-        // student: student.toJSON(),
         averageCourseScore: averageMark
       },
     });
@@ -168,7 +170,6 @@ exports.getStudentAverageCourseById = async (req, res) => {
     });
   }
 };
-
 
 
 
