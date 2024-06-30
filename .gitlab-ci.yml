@@ -2,10 +2,10 @@ stages:
   - build
   - package
 
-# variables:
-#   APP_VERSION: $CI_PIPELINE_IID
+variables:
+  APP_VERSION: $CI_PIPELINE_IID
 
-build APP_VERSION:
+build application:
   image: node:16-node:16-alpine
   stage: build
   script:
@@ -19,6 +19,6 @@ build docker image:
     - docker:20.10.12-dind
   script:
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
-    - docker build -t $CI_REGISTRY_IMAGE -t $CI_REGISTRY_IMAGE .
+    - docker build -t $CI_REGISTRY_IMAGE -t $CI_REGISTRY_IMAGE:$APP_VERSION .
     - docker image ls
     - docker push -all-tags $CI_REGISTRY_IMAGE
