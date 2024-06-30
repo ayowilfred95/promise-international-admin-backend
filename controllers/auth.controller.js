@@ -154,7 +154,7 @@ exports.resetPassword = async (req, res) => {
       status: "failed",
       error: "check email properly",
     });
-  }
+  }ge
 };
 
 const verifyToken = (req, res, next) => {
