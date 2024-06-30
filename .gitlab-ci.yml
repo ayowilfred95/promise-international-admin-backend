@@ -30,5 +30,5 @@ test docker image:
     - name: $CI_REGISTRY_IMAGE:$APP_VERSION
       alias: website
   script:
-    - curl http://website | grep $APP_VERSION
+    - curl http://website:4000 | grep $APP_VERSION || (echo "Version check failed!" && exit 1)
 
