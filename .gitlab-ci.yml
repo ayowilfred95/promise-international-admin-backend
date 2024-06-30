@@ -1,16 +1,16 @@
 stages:
-  - build
+  # - build
   - package
   - test
 
 variables:
   APP_VERSION: $CI_PIPELINE_IID
 
-build application:
-  image: node:16-alpine
-  stage: build
-  script:
-    - npm install
+# build application:
+#   image: node:16-alpine
+#   stage: build
+#   script:
+#     - npm install
 
 build docker image:
   stage: package
@@ -32,7 +32,7 @@ test docker image:
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" "$CI_REGISTRY" --password-stdin
     - docker pull "$CI_REGISTRY_IMAGE:$APP_VERSION" 
     - apk add --no-cache curl 
-    - container_id=$(docker run -d -p 4000:4000 --network="host" "$CI_REGISTRY_IMAGE:$APP_VERSION")
+    - container_id=$(docker run -d -p 4000:4000 "$CI_REGISTRY_IMAGE:$APP_VERSION")
     - sleep 10
     - curl --retry 5 --retry-delay 5 --retry-connrefused http://localhost:4000
     - docker stop "$container_id"
