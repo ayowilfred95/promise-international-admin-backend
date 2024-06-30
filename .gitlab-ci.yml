@@ -1,6 +1,7 @@
 stages:
   - build
   - package
+  - test
 
 variables:
   APP_VERSION: $CI_PIPELINE_IID
